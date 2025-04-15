@@ -16,25 +16,25 @@ passport.deserializeUser((obj: DiscordUser, done) => {
   done(null, obj);
 });
 
-passport.use(
-  new DiscordStrategy(
-    {
-      clientID: process.env.DISCORD_CLIENT_ID || "",
-      clientSecret: process.env.DISCORD_CLIENT_SECRET || "",
-      callbackURL: process.env.DISCORD_CALLBACK_URL || "",
-      scope: ["identify"],
-    },
-    (accessToken, refreshToken, profile: Profile, done) => {
-      const user: DiscordUser = {
-        id: profile.id,
-        username: profile.username,
-        discriminator: profile.discriminator,
-        avatar: profile.avatar,
-      };
-      return done(null, user);
-    }
-  )
-);
+// passport.use(
+//   new DiscordStrategy(
+//     {
+//       clientID: process.env.DISCORD_CLIENT_ID || "",
+//       clientSecret: process.env.DISCORD_CLIENT_SECRET || "",
+//       callbackURL: process.env.DISCORD_CALLBACK_URL || "",
+//       scope: ["identify"],
+//     },
+//     (accessToken, refreshToken, profile: Profile, done) => {
+//       const user: DiscordUser = {
+//         id: profile.id,
+//         username: profile.username,
+//         discriminator: profile.discriminator,
+//         avatar: profile.avatar,
+//       };
+//       return done(null, user);
+//     }
+//   )
+// );
 
 export const isAdmin = (req: Request, res: Response, next: NextFunction) => {
   const user = req.user as DiscordUser;

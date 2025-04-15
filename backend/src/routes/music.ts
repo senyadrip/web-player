@@ -19,13 +19,17 @@ import { Request, Response, NextFunction } from "express";
 
 const router = Router();
 
+
+
 router.get("/", getAllMusic);
-router.get("/metadata/:filePath", readMetadata);
 router.post("/", createMusic);
+router.get("/metadata/:filePath", readMetadata);
 router.put("/metadata/:filePath", updateMetadata);
 router.put("/:songId", isAdmin, updateMusic);
 router.delete("/:songId", isAdmin, deleteMusic);
 router.get("/:songId", getMusic);
 router.put("/order/:songId", updateOrder);
+
+export default router;
 
 

@@ -5,6 +5,7 @@ import Music from "../models/Music";
 import { DiscordUser } from "../types/types";
 import { Request, Response } from "express";
 import fs from "fs";
+import { isAdmin } from "../config/passport";
 
 // Generate a song ID consisting of date element and random element
 const generateSongId = () => {
@@ -52,6 +53,10 @@ const upload = multer({
 
 // Endpoint to create Music record
 export const createMusic = async (req: Request, res: Response) => {
+  
+  console.log("createMusic controller hit!");
+
+
   const uploadSingle = upload.single("file");
 
   uploadSingle(req, res, async (err) => {
@@ -110,7 +115,8 @@ export const createMusic = async (req: Request, res: Response) => {
           songId,
           filePath: path.relative(UPLOAD_DIR, newFilePath),
           order: nextOrder,
-          uploadedBy: user.username,
+          // uploadedBy: user.username,
+          uploadedBy: "Admin",
         });
         await newMusic.save();
         res.status(201).json(newMusic);
@@ -124,6 +130,7 @@ export const createMusic = async (req: Request, res: Response) => {
         res
           .status(500)
           .json({ message: "Failed to save the music record", error });
+          console.error("Error saving music:", error);
       }
     } catch (error) {
       res
