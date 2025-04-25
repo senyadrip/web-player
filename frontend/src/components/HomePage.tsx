@@ -1,5 +1,5 @@
 import React from "react";
-// import Authenticator from "./Authenticator";
+import Authenticator from "./Authenticator";
 import TrackTable from "./TrackTable";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/src/styles.scss";
@@ -17,6 +17,7 @@ const HomePage = () => {
         <h1 className="absolute left-1/2 transform -translate-x-1/2 text-white text-semibold text-5xl">
           Music Player
         </h1>
+        <Authenticator />
       </div>
       <TrackTable />
     </div>

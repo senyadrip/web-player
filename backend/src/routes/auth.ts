@@ -27,7 +27,7 @@ router.get(
   "/discord/callback",
   passport.authenticate("discord", {
     failureRedirect: "/",
-    successRedirect: "http://localhost:5174",
+    successRedirect: "http://localhost:5173",
   })
 );
 
@@ -36,7 +36,7 @@ router.get("/logout", (req, res, next) => {
     if (err) {
       return next(err);
     }
-    res.redirect("http://localhost:5174");
+    res.redirect("http://localhost:5173");
   });
 });
 

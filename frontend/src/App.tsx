@@ -1,7 +1,7 @@
 // import Authenticator from "./components/Authenticator";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HomePage from "./components/HomePage";
-// import Admin from "./components/Admin";
+import Admin from "./components/Admin";
 
 function App() {
 
@@ -10,10 +10,10 @@ function App() {
       path: '/',
       element: <HomePage/>
     }, 
-    // {
-    //   path: '/admin',
-    //   element: <Admin/>
-    // }
+    {
+      path: '/admin',
+      element: <Admin/>
+    }
   ]);
 
   return (
